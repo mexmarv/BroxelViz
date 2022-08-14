@@ -67,11 +67,8 @@ $( document ).ready(function() {
 
     // API button has been clicked
     $( "#api_button" ).click(function() {
-      //Get the value of the search box
-      let raw_search_query = $('#search-text').val();
-      let search_query = encodeURI(raw_search_query);
       // Make Spotify API call
-      // Note: We are using the track API endpoint.
+      // Note: We are using the currently-playing API endpoint.
       $.ajax({
         url: `https://api.spotify.com/v1/me/player/currently-playing`,
         type: 'GET',
@@ -84,9 +81,10 @@ $( document ).ready(function() {
           let name = data.item.name;
           let link = data.item.external_urls.spotify;
           
-          let iframe = `<div class='song'><iframe src=${link} frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>`;
-            let parent_div = $('#song_0');
-            parent_div.html(iframe);
+          let iframe = `<pre>${id}\n${name}\n${link}</pre>`;
+          let parent_div = $('#current');
+          
+          parent_div.html(iframe);
           
         }
       }); // End of Spotify ajax call
