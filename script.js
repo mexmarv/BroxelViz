@@ -70,7 +70,7 @@ $( document ).ready(function() {
       // Make Spotify API call
       // Note: We are using the currently-playing API endpoint.
       $.ajax({
-        url: `https://api.spotify.com/v1/me/player`,
+        url: `https://api.spotify.com/v1/me/player/currently-playing`,
         type: 'GET',
         headers: {
             'Authorization' : 'Bearer ' + accessToken
