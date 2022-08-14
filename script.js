@@ -73,7 +73,7 @@ $( document ).ready(function() {
         url: `https://api.spotify.com/v1/me/player/currently-playing`,
         type: 'GET',
         headers: {
-            'Authorization' : 'Bearer ' + accessToken
+            'Authorization' : accessToken
         },
         success: function(data) {
           // Load current track playing info
