@@ -33,7 +33,7 @@ $( document ).ready(function() {
     }
 
     // Search button has been clicked
-    $( "#search_button" ).click(function() {
+    $( "#api_button" ).click(function() {
       //Get the value of the search box
       let raw_search_query = $('#search-text').val();
       let search_query = encodeURI(raw_search_query);
@@ -67,7 +67,7 @@ $( document ).ready(function() {
     }); // End of search button
 
     // API button has been clicked
-    $( "#api_button" ).click(function() {
+    $( "#search_button" ).click(function() {
       // Make Spotify API call
       // Note: We are using the currently-playing API endpoint.
       $.ajax({
