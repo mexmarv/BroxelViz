@@ -43,7 +43,8 @@ $( document ).ready(function() {
         url: `https://api.spotify.com/v1/search?q=${search_query}&type=track`,
         type: 'GET',
         headers: {
-            'Authorization' : 'Bearer ' + accessToken
+            'Authorization' : 'Bearer ' + accessToken,
+            'Accept': 'application/json'
         },
         success: function(data) {
           // Load our songs from Spotify into our page
@@ -70,22 +71,23 @@ $( document ).ready(function() {
       // Make Spotify API call
       // Note: We are using the currently-playing API endpoint.
       $.ajax({
-        url: `https://api.spotify.com/v1/me/player/currently-playing`,
+        url: 'https://api.spotify.com/v1/me/player',
         type: 'GET',
         headers: {
-            'Authorization' : accessToken
+            'Authorization' : 'Bearer ' + accessToken,
+            'Accept': 'application/json'
         },
-        success: function(data) {
+        success: function(data2) {
           // Load current track playing info
-          let id = data.item.id;
-          let name = data.item.name;
-          let link = data.item.external_urls.spotify;
+          let id = data2.item.id;
+          let name = data2.item.name;
+          let link = data2.item.external_urls.spotify;
           
-          let iframe = `<pre>${data}</pre>`;
+          let iframe = `<pre>${data2}</pre>`;
           let parent_div = $('#current_song');
           
           parent_div.html(iframe);
-          console.log(data);
+          console.log(data2);
           
         }
       }); // End of Spotify ajax call
